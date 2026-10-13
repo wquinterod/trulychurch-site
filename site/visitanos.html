@@ -6,6 +6,8 @@
 <title>Visítanos · Truly Church</title>
 <meta name="description" content="Dirección, horarios y qué esperar en tu primera visita.">
 <meta name="robots" content="noindex, nofollow">
+<link rel="alternate" hreflang="es" href="/visitanos.html">
+<link rel="alternate" hreflang="en" href="/en/visitanos.html">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,12 +21,15 @@
     <a class="brand" href="index.html"><img src="logo.svg" alt=""><b>Truly Church</b></a>
     <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" onclick="const l=document.querySelector('.nav-links');const o=l.classList.toggle('open');this.setAttribute('aria-expanded',o)"><span></span><span></span><span></span></button>
     <ul class="nav-links"><li><a href="index.html">Inicio</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="grupos.html">Grupos</a></li><li><a href="eventos.html">Eventos</a></li><li><a href="oracion.html">Oración</a></li><li><a href="visitanos.html" aria-current="page">Visítanos</a></li></ul>
-    <a class="btn btn-gold" href="visitanos.html">Planea tu visita</a>
+    <div class="nav-end">
+      <nav class="lang-switch" aria-label="Idioma / Language"><a href="visitanos.html" hreflang="es" aria-current="true">ES</a><a href="en/visitanos.html" hreflang="en">EN</a></nav>
+      <a class="btn btn-gold" href="visitanos.html">Planea tu visita</a>
+    </div>
   </div>
 </header>
 <main>
 
-<section class="page-hero"><div class="wrap"><span class="eyebrow">Planea tu visita</span><h1>Te estamos esperando</h1><p>Sabemos que llegar por primera vez a una iglesia puede dar nervios. Aquí te contamos todo lo que necesitas saber.</p></div></section>
+<section class="page-hero photo" style="background-image:url('https://images.unsplash.com/photo-1635178945103-fb817c1476fd?auto=format&fit=crop&w=1200&q=70')"><div class="wrap"><span class="eyebrow">Planea tu visita</span><h1>Te estamos esperando</h1><p>Sabemos que llegar por primera vez a una iglesia puede dar nervios. Aquí te contamos todo lo que necesitas saber.</p></div></section>
 <section>
   <div class="wrap split">
     <div class="card" style="padding:34px">
@@ -58,11 +63,12 @@
       <div><h4>Iglesia</h4><ul><li><a href="nosotros.html">Nuestra historia</a></li><li><a href="nosotros.html#pastores">Pastores</a></li><li><a href="visitanos.html">Preguntas frecuentes</a></li></ul></div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Truly Church · Iglesia ficticia para demostración.</span>
+      <span>© 2026 Truly Church · Iglesia ficticia para demostración. <span class="credits">Fotos: Unsplash · Video: Mixkit</span></span>
       <span>Tu iglesia también puede tener esto: <a href="https://truly.church" target="_blank" rel="noopener">conoce Truly</a></span>
     </div>
   </div>
 </footer>
 <script src="https://truly.church/api/public/chat/5egx2yABl2bx/widget.js" async></script>
+
 </body>
 </html>
