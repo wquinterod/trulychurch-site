@@ -10,6 +10,10 @@ import { mkdirSync, writeFileSync } from "node:fs";
 
 const TRULY = "https://truly.church";
 const CODE = "5egx2yABl2bx"; // Iglesia Demo de Truly ("Truly Church")
+// Truly avisa el alto real de sus páginas incrustadas: el iframe crece o se
+// encoge con el contenido (sin scroll adentro). Es el mismo script que trae el
+// código para incrustar de Truly (Comunicaciones > Página web).
+const EMBED_LISTENER = `<script>addEventListener("message",function(e){if(e.origin!=="${TRULY}"||!e.data||e.data.type!=="truly-embed-height")return;document.querySelectorAll("iframe").forEach(function(f){if(f.contentWindow===e.source)f.style.height=Math.max(320,Number(e.data.height)||0)+"px"})});</script>`;
 const CHAT = `<script src="${TRULY}/api/public/chat/${CODE}/widget.js" async></script>`;
 const img = (id, w = 1600) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=70`;
 const MEDIA = {
@@ -37,6 +41,8 @@ const T = {
     other: "en",
     nav: { index: "Inicio", nosotros: "Nosotros", grupos: "Grupos", eventos: "Eventos", oracion: "Oración", visitanos: "Visítanos" },
     plan: "Planea tu visita",
+    platform: "Plataforma",
+    platformTitle: "Entra a Truly: líderes, equipo y miembros",
     demo: `Sitio de demostración: <b>Truly Church</b> es una iglesia ficticia. El chat, la oración y "Encuentra tu grupo" funcionan con <a href="${TRULY}" target="_blank" rel="noopener">Truly</a>.`,
     menu: "Abrir menú",
     footer: {
@@ -62,6 +68,8 @@ const T = {
     other: "es",
     nav: { index: "Home", nosotros: "About", grupos: "Groups", eventos: "Events", oracion: "Prayer", visitanos: "Visit" },
     plan: "Plan your visit",
+    platform: "Platform",
+    platformTitle: "Sign in to Truly: leaders, team and members",
     demo: `Demo site: <b>Truly Church</b> is a fictional church. The chat, prayer and "Find your group" run on <a href="${TRULY}" target="_blank" rel="noopener">Truly</a>.`,
     menu: "Open menu",
     footer: {
@@ -105,7 +113,7 @@ function layout(t, file, title, description, body) {
 <link rel="icon" href="${base}logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,500;0,600;0,700;0,800;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${base}styles.css">
 </head>
 <body>
@@ -114,7 +122,7 @@ function layout(t, file, title, description, body) {
   <div class="wrap nav">
     <a class="brand" href="index.html"><img src="${base}logo.svg" alt=""><b>Truly Church</b></a>
     <button class="menu-toggle" aria-label="${t.menu}" aria-expanded="false" onclick="const l=document.querySelector('.nav-links');const o=l.classList.toggle('open');this.setAttribute('aria-expanded',o)"><span></span><span></span><span></span></button>
-    <ul class="nav-links">${nav}</ul>
+    <ul class="nav-links">${nav}<li><a class="nav-platform" href="${TRULY}/login" title="${t.platformTitle}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg>${t.platform}</a></li></ul>
     <div class="nav-end">
       <nav class="lang-switch" aria-label="Idioma / Language"><a href="${esHref}" hreflang="es"${t.lang === "es" ? ' aria-current="true"' : ""}>ES</a><a href="${enHref}" hreflang="en"${t.lang === "en" ? ' aria-current="true"' : ""}>EN</a></nav>
       <a class="btn btn-gold" href="visitanos.html">${t.plan}</a>
@@ -181,7 +189,7 @@ function content(lang) {
       <h1>${L("Un lugar para <em>pertenecer</em>.", "A place to <em>belong</em>.")}</h1>
       <p class="lead">${L("Somos una familia de fe en Houston. Aquí nadie llega solo: te recibimos, caminamos contigo y te ayudamos a dar el siguiente paso.", "We are a family of faith in Houston. No one arrives alone here: we welcome you, walk with you and help you take your next step.")}</p>
       <div class="hero-actions">
-        <a class="btn btn-gold" href="grupos.html">${L("Encuentra tu grupo", "Find your group")}</a>
+        <a class="btn btn-gold btn-lg" href="grupos.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>${L("Buscar mi grupo de conexión", "Find my connection group")}</a>
         <a class="btn btn-ghost" href="visitanos.html">${L("Planea tu visita", "Plan your visit")}</a>
       </div>
     </div>
@@ -203,7 +211,7 @@ function content(lang) {
       <p>${L("Así es el camino de cada persona en Truly Church. Empieza por donde estés.", "This is everyone's path at Truly Church. Start wherever you are.")}</p>
     </div>
     <div class="bento">
-      <a class="tile span-4" href="grupos.html" style="min-height:340px"><img src="${MEDIA.silhouettes}" alt=""><h3>${L("Conéctate", "Connect")}</h3><p>${L("Quince grupos de conexión se reúnen en casas por toda la ciudad. Encuentra el más cercano a ti.", "Fifteen connection groups meet in homes across the city. Find the one closest to you.")}</p><span class="go">${L("Buscar mi grupo →", "Find my group →")}</span></a>
+      <a class="tile span-4" href="grupos.html" style="min-height:340px"><img src="${MEDIA.silhouettes}" alt=""><h3>${L("Conéctate", "Connect")}</h3><p>${L("Doce grupos de conexión se reúnen en casas por toda la ciudad. Encuentra el más cercano a ti.", "Twelve connection groups meet in homes across the city. Find the one closest to you.")}</p><span class="go">${L("Buscar mi grupo →", "Find my group →")}</span></a>
       <a class="tile gold span-2" href="eventos.html"><h3>${L("Crece", "Grow")}</h3><p>${L("Clases, rutas de crecimiento y un plan devocional.", "Classes, growth paths and a devotional plan.")}</p><span class="go">${L("Próximas clases →", "Upcoming classes →")}</span></a>
       <a class="tile plain span-2" href="nosotros.html#ministerios"><h3>${L("Sirve", "Serve")}</h3><p>${L("Alabanza, niños, bienvenida, medios y más.", "Worship, kids, welcome team, media and more.")}</p><span class="go">${L("Áreas de servicio →", "Ways to serve →")}</span></a>
       <a class="tile span-4" href="oracion.html" style="min-height:300px"><img src="${MEDIA.praying}" alt=""><h3>${L("¿Podemos orar por ti?", "Can we pray for you?")}</h3><p>${L("Nuestro equipo de cuidado ora por cada petición. Es confidencial.", "Our care team prays for every request. It's confidential.")}</p><span class="go">${L("Enviar una petición →", "Send a request →")}</span></a>
@@ -219,7 +227,7 @@ function content(lang) {
       <h2 class="title">${L("Empezamos en una sala, con doce personas y una mesa", "We started in a living room, with twelve people and a table")}</h2>
       <p style="color:var(--muted);font-size:18px">${L("En 2011 un grupo de familias comenzó a reunirse los jueves para orar y compartir la cena. Hoy somos una iglesia con dos servicios y grupos en toda la ciudad, pero seguimos creyendo lo mismo: la vida se vive mejor en comunidad.", "In 2011 a few families began meeting on Thursdays to pray and share dinner. Today we are a church with two services and groups across the city, but we still believe the same thing: life is better lived in community.")}</p>
       <div class="stats" style="grid-template-columns:repeat(2,minmax(0,1fr))">
-        <div class="stat"><b>15</b><span>${L("grupos de conexión", "connection groups")}</span></div>
+        <div class="stat"><b>12</b><span>${L("grupos de conexión", "connection groups")}</span></div>
         <div class="stat"><b>40+</b><span>${L("voluntarios", "volunteers")}</span></div>
       </div>
       <p style="margin-top:24px"><a class="btn btn-outline" href="nosotros.html">${L("Conoce nuestra historia", "Read our story")}</a></p>
@@ -263,7 +271,7 @@ function content(lang) {
       <ul class="timeline">
         <li><b>${L("2011 · Una mesa y doce personas", "2011 · A table and twelve people")}</b><p>${L("Tres familias empiezan a reunirse los jueves en una casa de Clear Lake para orar y compartir la cena.", "Three families start meeting on Thursdays in a Clear Lake home to pray and share dinner.")}</p></li>
         <li><b>${L("2014 · El primer domingo", "2014 · Our first Sunday")}</b><p>${L("Alquilamos un salón comunitario y celebramos nuestro primer servicio con ochenta personas.", "We rented a community hall and held our first service with eighty people.")}</p></li>
-        <li><b>${L("2018 · Grupos en cada barrio", "2018 · Groups in every neighborhood")}</b><p>${L("Los grupos de conexión se multiplican: hoy hay quince, en casas de toda la ciudad.", "Connection groups multiply: today there are fifteen, in homes across the city.")}</p></li>
+        <li><b>${L("2018 · Grupos en cada barrio", "2018 · Groups in every neighborhood")}</b><p>${L("Los grupos de conexión se multiplican: hoy hay doce, en casas de toda la ciudad.", "Connection groups multiply: today there are twelve, in homes across the city.")}</p></li>
         <li><b>${L("2023 · Una casa propia", "2023 · A home of our own")}</b><p>${L("Nos mudamos a 100 Demo Way y abrimos un segundo servicio los domingos.", "We moved to 100 Demo Way and added a second Sunday service.")}</p></li>
         <li><b>${L("Hoy · Pertenecer, crecer y servir", "Today · Belong, grow and serve")}</b><p>${L("Seguimos con la misma convicción: la fe se vive mejor en comunidad.", "Same conviction as day one: faith is better lived in community.")}</p></li>
       </ul>
@@ -309,10 +317,10 @@ function content(lang) {
       title: L("Grupos de conexión", "Connection groups"),
       description: L("Encuentra un grupo de conexión cerca de tu casa.", "Find a connection group near your home."),
       body: `
-<section class="page-hero photo" style="background-image:url('${MEDIA.praying}')"><div class="wrap"><span class="eyebrow">${L("Grupos de conexión", "Connection groups")}</span><h1>${L("Encuentra tu grupo", "Find your group")}</h1><p>${L("Nos reunimos en casas por toda la ciudad. Escribe tu dirección y te mostramos los grupos más cercanos.", "We meet in homes across the city. Enter your address and we'll show you the closest groups.")}</p></div></section>
+<section class="page-hero photo compact" style="background-image:url('${MEDIA.praying}')"><div class="wrap"><span class="eyebrow">${L("Grupos de conexión", "Connection groups")}</span><h1>${L("Encuentra tu grupo", "Find your group")}</h1><p>${L("Nos reunimos en casas por toda la ciudad. Escribe tu dirección y te mostramos los grupos más cercanos.", "We meet in homes across the city. Enter your address and we'll show you the closest groups.")}</p></div></section>
 <section>
-  <div class="wrap" style="max-width:880px">
-    <div class="embed-shell"><iframe src="${TRULY}/grupos-cerca/${CODE}" style="height:980px" loading="lazy" title="${L("Encuentra tu grupo", "Find your group")}"></iframe></div>
+  <div class="wrap" style="max-width:1160px">
+    <div class="embed-shell"><iframe src="${TRULY}/grupos-cerca/${CODE}" style="height:980px" loading="lazy" title="${L("Encuentra tu grupo", "Find your group")}"></iframe></div>${EMBED_LISTENER}
     <p class="embed-note"><b>${L("Así funciona:", "How it works:")}</b> ${L("al elegir un grupo, el líder recibe un aviso para darte la bienvenida.", "when you choose a group, the leader is notified to welcome you.")}</p>
     ${spanishOnly}
   </div>
@@ -322,10 +330,10 @@ function content(lang) {
       title: L("Petición de oración", "Prayer request"),
       description: L("Envía tu petición de oración al equipo de cuidado.", "Send your prayer request to the care team."),
       body: `
-<section class="page-hero photo" style="background-image:url('${MEDIA.hands}')"><div class="wrap"><span class="eyebrow">${L("Oración", "Prayer")}</span><h1>${L("Queremos orar por ti", "We want to pray for you")}</h1><p>${L("Cuéntanos tu necesidad. Nuestro equipo de cuidado ora por cada petición y, si lo deseas, te contacta.", "Tell us what you need. Our care team prays for every request and, if you wish, reaches out to you.")}</p></div></section>
+<section class="page-hero photo compact" style="background-image:url('${MEDIA.hands}')"><div class="wrap"><span class="eyebrow">${L("Oración", "Prayer")}</span><h1>${L("Queremos orar por ti", "We want to pray for you")}</h1><p>${L("Cuéntanos tu necesidad. Nuestro equipo de cuidado ora por cada petición y, si lo deseas, te contacta.", "Tell us what you need. Our care team prays for every request and, if you wish, reaches out to you.")}</p></div></section>
 <section>
   <div class="wrap" style="max-width:760px">
-    <div class="embed-shell"><iframe src="${TRULY}/oracion/${CODE}" style="height:860px" loading="lazy" title="${L("Petición de oración", "Prayer request")}"></iframe></div>
+    <div class="embed-shell"><iframe src="${TRULY}/oracion/${CODE}" style="height:900px" loading="lazy" title="${L("Petición de oración", "Prayer request")}"></iframe></div>${EMBED_LISTENER}
     <p class="embed-note"><b>${L("Tu petición es confidencial:", "Your request is confidential:")}</b> ${L("solo la ve el equipo de cuidado de la iglesia.", "only the church's care team sees it.")}</p>
     ${spanishOnly}
   </div>

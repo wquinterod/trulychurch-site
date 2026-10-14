@@ -11,7 +11,7 @@
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,500;0,600;0,700;0,800;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,7 +20,7 @@
   <div class="wrap nav">
     <a class="brand" href="index.html"><img src="logo.svg" alt=""><b>Truly Church</b></a>
     <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" onclick="const l=document.querySelector('.nav-links');const o=l.classList.toggle('open');this.setAttribute('aria-expanded',o)"><span></span><span></span><span></span></button>
-    <ul class="nav-links"><li><a href="index.html">Inicio</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="grupos.html" aria-current="page">Grupos</a></li><li><a href="eventos.html">Eventos</a></li><li><a href="oracion.html">Oración</a></li><li><a href="visitanos.html">Visítanos</a></li></ul>
+    <ul class="nav-links"><li><a href="index.html">Inicio</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="grupos.html" aria-current="page">Grupos</a></li><li><a href="eventos.html">Eventos</a></li><li><a href="oracion.html">Oración</a></li><li><a href="visitanos.html">Visítanos</a></li><li><a class="nav-platform" href="https://truly.church/login" title="Entra a Truly: líderes, equipo y miembros"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg>Plataforma</a></li></ul>
     <div class="nav-end">
       <nav class="lang-switch" aria-label="Idioma / Language"><a href="grupos.html" hreflang="es" aria-current="true">ES</a><a href="en/grupos.html" hreflang="en">EN</a></nav>
       <a class="btn btn-gold" href="visitanos.html">Planea tu visita</a>
@@ -29,10 +29,10 @@
 </header>
 <main>
 
-<section class="page-hero photo" style="background-image:url('https://images.unsplash.com/photo-1729089049653-24312fdca908?auto=format&fit=crop&w=1600&q=70')"><div class="wrap"><span class="eyebrow">Grupos de conexión</span><h1>Encuentra tu grupo</h1><p>Nos reunimos en casas por toda la ciudad. Escribe tu dirección y te mostramos los grupos más cercanos.</p></div></section>
+<section class="page-hero photo compact" style="background-image:url('https://images.unsplash.com/photo-1729089049653-24312fdca908?auto=format&fit=crop&w=1600&q=70')"><div class="wrap"><span class="eyebrow">Grupos de conexión</span><h1>Encuentra tu grupo</h1><p>Nos reunimos en casas por toda la ciudad. Escribe tu dirección y te mostramos los grupos más cercanos.</p></div></section>
 <section>
-  <div class="wrap" style="max-width:880px">
-    <div class="embed-shell"><iframe src="https://truly.church/grupos-cerca/5egx2yABl2bx" style="height:980px" loading="lazy" title="Encuentra tu grupo"></iframe></div>
+  <div class="wrap" style="max-width:1160px">
+    <div class="embed-shell"><iframe src="https://truly.church/grupos-cerca/5egx2yABl2bx" style="height:980px" loading="lazy" title="Encuentra tu grupo"></iframe></div><script>addEventListener("message",function(e){if(e.origin!=="https://truly.church"||!e.data||e.data.type!=="truly-embed-height")return;document.querySelectorAll("iframe").forEach(function(f){if(f.contentWindow===e.source)f.style.height=Math.max(320,Number(e.data.height)||0)+"px"})});</script>
     <p class="embed-note"><b>Así funciona:</b> al elegir un grupo, el líder recibe un aviso para darte la bienvenida.</p>
     
   </div>

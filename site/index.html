@@ -11,7 +11,7 @@
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,500;0,600;0,700;0,800;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,7 +20,7 @@
   <div class="wrap nav">
     <a class="brand" href="index.html"><img src="logo.svg" alt=""><b>Truly Church</b></a>
     <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" onclick="const l=document.querySelector('.nav-links');const o=l.classList.toggle('open');this.setAttribute('aria-expanded',o)"><span></span><span></span><span></span></button>
-    <ul class="nav-links"><li><a href="index.html" aria-current="page">Inicio</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="grupos.html">Grupos</a></li><li><a href="eventos.html">Eventos</a></li><li><a href="oracion.html">Oración</a></li><li><a href="visitanos.html">Visítanos</a></li></ul>
+    <ul class="nav-links"><li><a href="index.html" aria-current="page">Inicio</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="grupos.html">Grupos</a></li><li><a href="eventos.html">Eventos</a></li><li><a href="oracion.html">Oración</a></li><li><a href="visitanos.html">Visítanos</a></li><li><a class="nav-platform" href="https://truly.church/login" title="Entra a Truly: líderes, equipo y miembros"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg>Plataforma</a></li></ul>
     <div class="nav-end">
       <nav class="lang-switch" aria-label="Idioma / Language"><a href="index.html" hreflang="es" aria-current="true">ES</a><a href="en/index.html" hreflang="en">EN</a></nav>
       <a class="btn btn-gold" href="visitanos.html">Planea tu visita</a>
@@ -38,7 +38,7 @@
       <h1>Un lugar para <em>pertenecer</em>.</h1>
       <p class="lead">Somos una familia de fe en Houston. Aquí nadie llega solo: te recibimos, caminamos contigo y te ayudamos a dar el siguiente paso.</p>
       <div class="hero-actions">
-        <a class="btn btn-gold" href="grupos.html">Encuentra tu grupo</a>
+        <a class="btn btn-gold btn-lg" href="grupos.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Buscar mi grupo de conexión</a>
         <a class="btn btn-ghost" href="visitanos.html">Planea tu visita</a>
       </div>
     </div>
@@ -64,7 +64,7 @@
       <p>Así es el camino de cada persona en Truly Church. Empieza por donde estés.</p>
     </div>
     <div class="bento">
-      <a class="tile span-4" href="grupos.html" style="min-height:340px"><img src="https://images.unsplash.com/photo-1679579664774-da4283cab147?auto=format&fit=crop&w=1600&q=70" alt=""><h3>Conéctate</h3><p>Quince grupos de conexión se reúnen en casas por toda la ciudad. Encuentra el más cercano a ti.</p><span class="go">Buscar mi grupo →</span></a>
+      <a class="tile span-4" href="grupos.html" style="min-height:340px"><img src="https://images.unsplash.com/photo-1679579664774-da4283cab147?auto=format&fit=crop&w=1600&q=70" alt=""><h3>Conéctate</h3><p>Doce grupos de conexión se reúnen en casas por toda la ciudad. Encuentra el más cercano a ti.</p><span class="go">Buscar mi grupo →</span></a>
       <a class="tile gold span-2" href="eventos.html"><h3>Crece</h3><p>Clases, rutas de crecimiento y un plan devocional.</p><span class="go">Próximas clases →</span></a>
       <a class="tile plain span-2" href="nosotros.html#ministerios"><h3>Sirve</h3><p>Alabanza, niños, bienvenida, medios y más.</p><span class="go">Áreas de servicio →</span></a>
       <a class="tile span-4" href="oracion.html" style="min-height:300px"><img src="https://images.unsplash.com/photo-1729089049653-24312fdca908?auto=format&fit=crop&w=1600&q=70" alt=""><h3>¿Podemos orar por ti?</h3><p>Nuestro equipo de cuidado ora por cada petición. Es confidencial.</p><span class="go">Enviar una petición →</span></a>
@@ -80,7 +80,7 @@
       <h2 class="title">Empezamos en una sala, con doce personas y una mesa</h2>
       <p style="color:var(--muted);font-size:18px">En 2011 un grupo de familias comenzó a reunirse los jueves para orar y compartir la cena. Hoy somos una iglesia con dos servicios y grupos en toda la ciudad, pero seguimos creyendo lo mismo: la vida se vive mejor en comunidad.</p>
       <div class="stats" style="grid-template-columns:repeat(2,minmax(0,1fr))">
-        <div class="stat"><b>15</b><span>grupos de conexión</span></div>
+        <div class="stat"><b>12</b><span>grupos de conexión</span></div>
         <div class="stat"><b>40+</b><span>voluntarios</span></div>
       </div>
       <p style="margin-top:24px"><a class="btn btn-outline" href="nosotros.html">Conoce nuestra historia</a></p>
