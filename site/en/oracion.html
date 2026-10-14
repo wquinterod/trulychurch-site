@@ -60,7 +60,7 @@
   <iframe data-src="https://truly.church/grupos-cerca/5egx2yABl2bx" title="Find my connection group" style="height:900px"></iframe>
 </dialog>
 <script>(function(){var d=document.getElementById("truly-finder");if(!d||!d.showModal)return;var f=d.querySelector("iframe");document.addEventListener("click",function(e){var a=e.target.closest("[data-open-finder]");if(a){e.preventDefault();if(!f.src)f.src=f.dataset.src;d.showModal();}if(e.target.closest("[data-close-finder]")||e.target===d)d.close();});})();</script>
-<script>addEventListener("message",function(e){if(e.origin!=="https://truly.church"||!e.data||e.data.type!=="truly-embed-height")return;document.querySelectorAll("iframe").forEach(function(f){if(f.contentWindow===e.source)f.style.height=Math.max(320,Number(e.data.height)||0)+"px"})});</script>
+<script>addEventListener("message",function(e){if(e.origin!=="https://truly.church"||!e.data)return;var f=[].filter.call(document.querySelectorAll("iframe"),function(x){return x.contentWindow===e.source})[0];if(!f)return;if(e.data.type==="truly-embed-height")f.style.height=Math.max(320,Number(e.data.height)||0)+"px";if(e.data.type==="truly-embed-scroll"){var o=Number(e.data.offset)||0,p=f.parentElement;while(p&&p!==document.body){var s=getComputedStyle(p).overflowY;if((s==="auto"||s==="scroll")&&p.scrollHeight>p.clientHeight)break;p=p.parentElement}if(p&&p!==document.body)p.scrollTo({top:p.scrollTop+f.getBoundingClientRect().top-p.getBoundingClientRect().top+o-70,behavior:"smooth"});else window.scrollTo({top:f.getBoundingClientRect().top+scrollY+o-90,behavior:"smooth"})}});</script>
 <script src="https://truly.church/api/public/chat/5egx2yABl2bx/widget.js" async></script>
 
 </body>

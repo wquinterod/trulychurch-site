@@ -13,7 +13,7 @@ const CODE = "5egx2yABl2bx"; // Iglesia Demo de Truly ("Truly Church")
 // Truly avisa el alto real de sus páginas incrustadas: el iframe crece o se
 // encoge con el contenido (sin scroll adentro). Es el mismo script que trae el
 // código para incrustar de Truly (Comunicaciones > Página web).
-const EMBED_LISTENER = `<script>addEventListener("message",function(e){if(e.origin!=="${TRULY}"||!e.data||e.data.type!=="truly-embed-height")return;document.querySelectorAll("iframe").forEach(function(f){if(f.contentWindow===e.source)f.style.height=Math.max(320,Number(e.data.height)||0)+"px"})});</script>`;
+const EMBED_LISTENER = `<script>addEventListener("message",function(e){if(e.origin!=="${TRULY}"||!e.data)return;var f=[].filter.call(document.querySelectorAll("iframe"),function(x){return x.contentWindow===e.source})[0];if(!f)return;if(e.data.type==="truly-embed-height")f.style.height=Math.max(320,Number(e.data.height)||0)+"px";if(e.data.type==="truly-embed-scroll"){var o=Number(e.data.offset)||0,p=f.parentElement;while(p&&p!==document.body){var s=getComputedStyle(p).overflowY;if((s==="auto"||s==="scroll")&&p.scrollHeight>p.clientHeight)break;p=p.parentElement}if(p&&p!==document.body)p.scrollTo({top:p.scrollTop+f.getBoundingClientRect().top-p.getBoundingClientRect().top+o-70,behavior:"smooth"});else window.scrollTo({top:f.getBoundingClientRect().top+scrollY+o-90,behavior:"smooth"})}});</script>`;
 const FINDER_URL = `${TRULY}/grupos-cerca/${CODE}`;
 const finderModal = (t) => `<dialog class="finder-modal" id="truly-finder" aria-label="${t.finderTitle}">
   <div class="finder-bar"><b>${t.finderTitle}</b><button type="button" class="finder-close" data-close-finder aria-label="${t.close}">✕</button></div>
