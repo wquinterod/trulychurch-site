@@ -38,7 +38,7 @@
       <h1>A place to <em>belong</em>.</h1>
       <p class="lead">We are a family of faith in Houston. No one arrives alone here: we welcome you, walk with you and help you take your next step.</p>
       <div class="hero-actions">
-        <a class="btn btn-group" href="grupos.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Find my connection group</a>
+        <a class="btn btn-group" href="https://truly.church/grupos-cerca/5egx2yABl2bx" data-open-finder><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Find my connection group</a>
         <a class="btn btn-ghost" href="visitanos.html">Plan your visit</a>
       </div>
     </div>
@@ -63,7 +63,7 @@
         <p>Enter your address and in a minute you will see the closest groups, their day and their leader. You choose; the leader reaches out.</p>
         <ul class="spot-facts"><li><b>12</b>active groups</li><li><b>1×</b>per week</li><li><b>1 min</b>to find yours</li></ul>
       </div>
-      <a class="btn btn-spot" href="grupos.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Find my connection group<span aria-hidden="true">→</span></a>
+      <a class="btn btn-spot" href="https://truly.church/grupos-cerca/5egx2yABl2bx" data-open-finder><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Find my connection group<span aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
@@ -143,6 +143,12 @@
     </div>
   </div>
 </footer>
+<dialog class="finder-modal" id="truly-finder" aria-label="Find my connection group">
+  <div class="finder-bar"><b>Find my connection group</b><button type="button" class="finder-close" data-close-finder aria-label="Close">✕</button></div>
+  <iframe data-src="https://truly.church/grupos-cerca/5egx2yABl2bx" title="Find my connection group" style="height:900px"></iframe>
+</dialog>
+<script>(function(){var d=document.getElementById("truly-finder");if(!d||!d.showModal)return;var f=d.querySelector("iframe");document.addEventListener("click",function(e){var a=e.target.closest("[data-open-finder]");if(a){e.preventDefault();if(!f.src)f.src=f.dataset.src;d.showModal();}if(e.target.closest("[data-close-finder]")||e.target===d)d.close();});})();</script>
+<script>addEventListener("message",function(e){if(e.origin!=="https://truly.church"||!e.data||e.data.type!=="truly-embed-height")return;document.querySelectorAll("iframe").forEach(function(f){if(f.contentWindow===e.source)f.style.height=Math.max(320,Number(e.data.height)||0)+"px"})});</script>
 <script src="https://truly.church/api/public/chat/5egx2yABl2bx/widget.js" async></script>
 
 </body>

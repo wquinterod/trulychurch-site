@@ -14,6 +14,12 @@ const CODE = "5egx2yABl2bx"; // Iglesia Demo de Truly ("Truly Church")
 // encoge con el contenido (sin scroll adentro). Es el mismo script que trae el
 // código para incrustar de Truly (Comunicaciones > Página web).
 const EMBED_LISTENER = `<script>addEventListener("message",function(e){if(e.origin!=="${TRULY}"||!e.data||e.data.type!=="truly-embed-height")return;document.querySelectorAll("iframe").forEach(function(f){if(f.contentWindow===e.source)f.style.height=Math.max(320,Number(e.data.height)||0)+"px"})});</script>`;
+const FINDER_URL = `${TRULY}/grupos-cerca/${CODE}`;
+const finderModal = (t) => `<dialog class="finder-modal" id="truly-finder" aria-label="${t.finderTitle}">
+  <div class="finder-bar"><b>${t.finderTitle}</b><button type="button" class="finder-close" data-close-finder aria-label="${t.close}">✕</button></div>
+  <iframe data-src="${FINDER_URL}" title="${t.finderTitle}" style="height:900px"></iframe>
+</dialog>
+<script>(function(){var d=document.getElementById("truly-finder");if(!d||!d.showModal)return;var f=d.querySelector("iframe");document.addEventListener("click",function(e){var a=e.target.closest("[data-open-finder]");if(a){e.preventDefault();if(!f.src)f.src=f.dataset.src;d.showModal();}if(e.target.closest("[data-close-finder]")||e.target===d)d.close();});})();</script>`;
 const CHAT = `<script src="${TRULY}/api/public/chat/${CODE}/widget.js" async></script>`;
 const img = (id, w = 1600) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=70`;
 const MEDIA = {
@@ -42,6 +48,8 @@ const T = {
     nav: { index: "Inicio", nosotros: "Nosotros", grupos: "Grupos", eventos: "Eventos", oracion: "Oración", visitanos: "Visítanos" },
     plan: "Planea tu visita",
     platform: "Plataforma",
+    finderTitle: "Buscar mi grupo de conexión",
+    close: "Cerrar",
     platformTitle: "Entra a Truly: líderes, equipo y miembros",
     demo: `Sitio de demostración: <b>Truly Church</b> es una iglesia ficticia. El chat, la oración y "Encuentra tu grupo" funcionan con <a href="${TRULY}" target="_blank" rel="noopener">Truly</a>.`,
     menu: "Abrir menú",
@@ -69,6 +77,8 @@ const T = {
     nav: { index: "Home", nosotros: "About", grupos: "Groups", eventos: "Events", oracion: "Prayer", visitanos: "Visit" },
     plan: "Plan your visit",
     platform: "Platform",
+    finderTitle: "Find my connection group",
+    close: "Close",
     platformTitle: "Sign in to Truly: leaders, team and members",
     demo: `Demo site: <b>Truly Church</b> is a fictional church. The chat, prayer and "Find your group" run on <a href="${TRULY}" target="_blank" rel="noopener">Truly</a>.`,
     menu: "Open menu",
@@ -149,6 +159,8 @@ ${body}
     </div>
   </div>
 </footer>
+${finderModal(t)}
+${EMBED_LISTENER}
 ${CHAT}
 ${here ? "" : ""}
 </body>
@@ -189,7 +201,7 @@ function content(lang) {
       <h1>${L("Un lugar para <em>pertenecer</em>.", "A place to <em>belong</em>.")}</h1>
       <p class="lead">${L("Somos una familia de fe en Houston. Aquí nadie llega solo: te recibimos, caminamos contigo y te ayudamos a dar el siguiente paso.", "We are a family of faith in Houston. No one arrives alone here: we welcome you, walk with you and help you take your next step.")}</p>
       <div class="hero-actions">
-        <a class="btn btn-group" href="grupos.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>${L("Buscar mi grupo de conexión", "Find my connection group")}</a>
+        <a class="btn btn-group" href="${FINDER_URL}" data-open-finder><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>${L("Buscar mi grupo de conexión", "Find my connection group")}</a>
         <a class="btn btn-ghost" href="visitanos.html">${L("Planea tu visita", "Plan your visit")}</a>
       </div>
     </div>
@@ -210,7 +222,7 @@ function content(lang) {
         <p>${L("Escribe tu dirección y en un minuto ves los grupos más cercanos, su día y su líder. Tú eliges; el líder te contacta.", "Enter your address and in a minute you will see the closest groups, their day and their leader. You choose; the leader reaches out.")}</p>
         <ul class="spot-facts"><li><b>12</b>${L("grupos activos", "active groups")}</li><li><b>1×</b>${L("por semana", "per week")}</li><li><b>1 min</b>${L("para encontrarlo", "to find yours")}</li></ul>
       </div>
-      <a class="btn btn-spot" href="grupos.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>${L("Buscar mi grupo de conexión", "Find my connection group")}<span aria-hidden="true">→</span></a>
+      <a class="btn btn-spot" href="${FINDER_URL}" data-open-finder><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>${L("Buscar mi grupo de conexión", "Find my connection group")}<span aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
@@ -334,8 +346,15 @@ function content(lang) {
 <section class="page-hero photo compact" style="background-image:url('${MEDIA.praying}')"><div class="wrap"><span class="eyebrow">${L("Grupos de conexión", "Connection groups")}</span><h1>${L("Encuentra tu grupo", "Find your group")}</h1><p>${L("Nos reunimos en casas por toda la ciudad. Escribe tu dirección y te mostramos los grupos más cercanos.", "We meet in homes across the city. Enter your address and we'll show you the closest groups.")}</p></div></section>
 <section>
   <div class="wrap" style="max-width:1160px">
-    <div class="embed-shell"><iframe src="${TRULY}/grupos-cerca/${CODE}" style="height:980px" loading="lazy" title="${L("Encuentra tu grupo", "Find your group")}"></iframe></div>${EMBED_LISTENER}
-    <p class="embed-note"><b>${L("Así funciona:", "How it works:")}</b> ${L("al elegir un grupo, el líder recibe un aviso para darte la bienvenida.", "when you choose a group, the leader is notified to welcome you.")}</p>
+    <ol class="steps">
+      <li><span>1</span><b>${L("Escribe tu dirección", "Enter your address")}</b><p>${L("Solo la usamos para calcular qué grupos te quedan más cerca.", "We only use it to find the groups closest to you.")}</p></li>
+      <li><span>2</span><b>${L("Mira los grupos cercanos", "See the nearby groups")}</b><p>${L("Distancia, día, hora y el nombre del líder de cada uno.", "Distance, day, time and the leader of each one.")}</p></li>
+      <li><span>3</span><b>${L("Elige y te contactamos", "Choose and we reach out")}</b><p>${L("El líder recibe tu solicitud y te escribe para darte la bienvenida.", "The leader gets your request and reaches out to welcome you.")}</p></li>
+    </ol>
+    <div class="finder-cta">
+      <a class="btn btn-group" href="${FINDER_URL}" data-open-finder><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>${L("Buscar mi grupo de conexión", "Find my connection group")}</a>
+      <p>${L("12 grupos activos en casas de Houston · toma un minuto", "12 active groups in homes across Houston · takes a minute")}</p>
+    </div>
     ${spanishOnly}
   </div>
 </section>`,
@@ -347,7 +366,7 @@ function content(lang) {
 <section class="page-hero photo compact" style="background-image:url('${MEDIA.hands}')"><div class="wrap"><span class="eyebrow">${L("Oración", "Prayer")}</span><h1>${L("Queremos orar por ti", "We want to pray for you")}</h1><p>${L("Cuéntanos tu necesidad. Nuestro equipo de cuidado ora por cada petición y, si lo deseas, te contacta.", "Tell us what you need. Our care team prays for every request and, if you wish, reaches out to you.")}</p></div></section>
 <section>
   <div class="wrap" style="max-width:760px">
-    <div class="embed-shell"><iframe src="${TRULY}/oracion/${CODE}" style="height:900px" loading="lazy" title="${L("Petición de oración", "Prayer request")}"></iframe></div>${EMBED_LISTENER}
+    <div class="embed-shell"><iframe src="${TRULY}/oracion/${CODE}" style="height:900px" loading="lazy" title="${L("Petición de oración", "Prayer request")}"></iframe></div>
     <p class="embed-note"><b>${L("Tu petición es confidencial:", "Your request is confidential:")}</b> ${L("solo la ve el equipo de cuidado de la iglesia.", "only the church's care team sees it.")}</p>
     ${spanishOnly}
   </div>

@@ -68,6 +68,12 @@
     </div>
   </div>
 </footer>
+<dialog class="finder-modal" id="truly-finder" aria-label="Buscar mi grupo de conexión">
+  <div class="finder-bar"><b>Buscar mi grupo de conexión</b><button type="button" class="finder-close" data-close-finder aria-label="Cerrar">✕</button></div>
+  <iframe data-src="https://truly.church/grupos-cerca/5egx2yABl2bx" title="Buscar mi grupo de conexión" style="height:900px"></iframe>
+</dialog>
+<script>(function(){var d=document.getElementById("truly-finder");if(!d||!d.showModal)return;var f=d.querySelector("iframe");document.addEventListener("click",function(e){var a=e.target.closest("[data-open-finder]");if(a){e.preventDefault();if(!f.src)f.src=f.dataset.src;d.showModal();}if(e.target.closest("[data-close-finder]")||e.target===d)d.close();});})();</script>
+<script>addEventListener("message",function(e){if(e.origin!=="https://truly.church"||!e.data||e.data.type!=="truly-embed-height")return;document.querySelectorAll("iframe").forEach(function(f){if(f.contentWindow===e.source)f.style.height=Math.max(320,Number(e.data.height)||0)+"px"})});</script>
 <script src="https://truly.church/api/public/chat/5egx2yABl2bx/widget.js" async></script>
 
 </body>

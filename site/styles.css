@@ -324,3 +324,28 @@ section.sand { background: linear-gradient(180deg, #0f171d, #0b1116); }
   .btn-group, .btn-spot { width: 100%; }
   .spot { grid-template-columns: 1fr; }
 }
+
+/* ===== Botón "Buscar mi grupo de conexión" + ventana (2026-10-14) ===== */
+.steps { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.steps li { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; }
+.steps span { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(34, 184, 214, 0.16); color: var(--gold-2); font-family: var(--serif); font-weight: 700; margin-bottom: 14px; }
+.steps b { display: block; font-family: var(--serif); font-size: 19px; color: var(--white); margin-bottom: 6px; }
+.steps p { margin: 0; color: var(--muted); }
+.finder-cta { margin-top: 36px; text-align: center; }
+.finder-cta p { margin: 16px 0 0; color: var(--muted); font-size: 14px; }
+.finder-modal { width: min(1180px, 100vw - 24px); max-height: calc(100dvh - 24px); padding: 0; border: 0; border-radius: 22px; overflow: auto; background: #ffffff; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6); }
+.finder-modal::backdrop { background: rgba(5, 9, 12, 0.72); backdrop-filter: blur(4px); }
+.finder-bar { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; background: #0b1116; color: var(--white); font-family: var(--serif); }
+.finder-close { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.25); background: transparent; color: var(--white); font-size: 16px; cursor: pointer; }
+.finder-modal iframe { display: block; width: 100%; border: 0; }
+@media (max-width: 780px) {
+  .steps { grid-template-columns: 1fr; }
+  .finder-modal { width: 100vw; max-height: 100dvh; height: 100dvh; border-radius: 0; }
+}
+.spot > * { min-width: 0; }
+@media (max-width: 780px) {
+  .btn-group, .btn-spot { white-space: normal; text-align: center; padding: 16px 20px; font-size: 17px; }
+}
+/* Video de portada siempre opaco (pedido del dueño 2026-10-14: "ese brillo es incómodo"). */
+.hero-v video, .hero-v .poster { filter: brightness(0.5) saturate(0.75) contrast(0.95); }
+.hero-v::after { background: linear-gradient(180deg, rgba(11, 17, 22, 0.55) 0%, rgba(11, 17, 22, 0.62) 45%, rgba(11, 17, 22, 0.97) 100%), radial-gradient(800px 400px at 15% 85%, rgba(19, 125, 154, 0.25), transparent 60%); }
