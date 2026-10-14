@@ -343,7 +343,7 @@ function content(lang) {
       title: L("Grupos de conexión", "Connection groups"),
       description: L("Encuentra un grupo de conexión cerca de tu casa.", "Find a connection group near your home."),
       body: `
-<section class="page-hero photo compact" style="background-image:url('${MEDIA.praying}')"><div class="wrap"><span class="eyebrow">${L("Grupos de conexión", "Connection groups")}</span><h1>${L("Encuentra tu grupo", "Find your group")}</h1><p>${L("Nos reunimos en casas por toda la ciudad. Escribe tu dirección y te mostramos los grupos más cercanos.", "We meet in homes across the city. Enter your address and we'll show you the closest groups.")}</p></div></section>
+<section class="page-hero photo compact" style="background-image:url('${MEDIA.praying}')"><div class="wrap"><span class="eyebrow">${L("Grupos de conexión", "Connection groups")}</span><h1>${L("Encuentra tu grupo", "Find your group")}</h1><p>${L("Nos reunimos en casas por toda la ciudad. Escribe tu dirección y te mostramos los grupos más cercanos.", "We meet in homes across the city. Enter your address and we'll show you the closest groups.")}</p><div class="hero-cta"><a class="btn btn-group" href="${FINDER_URL}" data-open-finder><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>${L("Buscar mi grupo de conexión", "Find my connection group")}</a><span>${L("12 grupos activos · toma un minuto", "12 active groups · takes a minute")}</span></div></div></section>
 <section>
   <div class="wrap" style="max-width:1160px">
     <ol class="steps">
@@ -351,10 +351,6 @@ function content(lang) {
       <li><span>2</span><b>${L("Mira los grupos cercanos", "See the nearby groups")}</b><p>${L("Distancia, día, hora y el nombre del líder de cada uno.", "Distance, day, time and the leader of each one.")}</p></li>
       <li><span>3</span><b>${L("Elige y te contactamos", "Choose and we reach out")}</b><p>${L("El líder recibe tu solicitud y te escribe para darte la bienvenida.", "The leader gets your request and reaches out to welcome you.")}</p></li>
     </ol>
-    <div class="finder-cta">
-      <a class="btn btn-group" href="${FINDER_URL}" data-open-finder><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>${L("Buscar mi grupo de conexión", "Find my connection group")}</a>
-      <p>${L("12 grupos activos en casas de Houston · toma un minuto", "12 active groups in homes across Houston · takes a minute")}</p>
-    </div>
     ${spanishOnly}
   </div>
 </section>`,

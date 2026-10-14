@@ -349,3 +349,6 @@ section.sand { background: linear-gradient(180deg, #0f171d, #0b1116); }
 /* Video de portada siempre opaco (pedido del dueño 2026-10-14: "ese brillo es incómodo"). */
 .hero-v video, .hero-v .poster { filter: brightness(0.5) saturate(0.75) contrast(0.95); }
 .hero-v::after { background: linear-gradient(180deg, rgba(11, 17, 22, 0.55) 0%, rgba(11, 17, 22, 0.62) 45%, rgba(11, 17, 22, 0.97) 100%), radial-gradient(800px 400px at 15% 85%, rgba(19, 125, 154, 0.25), transparent 60%); }
+
+.hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; margin-top: 26px; }
+.hero-cta span { color: #c9d0d8; font-size: 14px; }
