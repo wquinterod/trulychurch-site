@@ -198,7 +198,7 @@ function content(lang) {
   <div class="wrap">
     <div>
       <span class="live-dot">${L("Este domingo · 9:00 y 11:30", "This Sunday · 9:00 & 11:30")}</span>
-      <h1>${L("Un lugar para <em>pertenecer</em>.", "A place to <em>belong</em>.")}</h1>
+      <h1>${L("Un lugar para <em>crecer</em>.", "A place to <em>grow</em>.")}</h1>
       <p class="lead">${L("Somos una familia de fe en Houston. Aquí nadie llega solo: te recibimos, caminamos contigo y te ayudamos a dar el siguiente paso.", "We are a family of faith in Houston. No one arrives alone here: we welcome you, walk with you and help you take your next step.")}</p>
       <div class="hero-actions">
         <a class="btn btn-group" href="${FINDER_URL}" data-open-finder><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>${L("Buscar mi grupo de conexión", "Find my connection group")}</a>
