@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Truly Church">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#FFB15C"/>
-      <stop offset="1" stop-color="#FF6A00"/>
+      <stop offset="0" stop-color="#7FE3F2"/>
+      <stop offset="1" stop-color="#22B8D6"/>
     </linearGradient>
   </defs>
-  <circle cx="32" cy="32" r="30" fill="#0B3AA8"/>
-  <circle cx="32" cy="32" r="27" fill="none" stroke="#FFB15C" stroke-opacity=".35" stroke-width="1"/>
+  <circle cx="32" cy="32" r="30" fill="#137D9A"/>
+  <circle cx="32" cy="32" r="27" fill="none" stroke="#7FE3F2" stroke-opacity=".35" stroke-width="1"/>
   <!-- cruz -->
   <path d="M30 14h4v13h9v4h-9v19h-4V31h-9v-4h9z" fill="#FFFFFF" fill-opacity=".92"/>
   <!-- llama / paloma -->

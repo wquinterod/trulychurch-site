@@ -113,7 +113,7 @@ function layout(t, file, title, description, body) {
 <link rel="icon" href="${base}logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,500;0,600;0,700;0,800;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${base}styles.css">
 </head>
 <body>
@@ -189,7 +189,7 @@ function content(lang) {
       <h1>${L("Un lugar para <em>pertenecer</em>.", "A place to <em>belong</em>.")}</h1>
       <p class="lead">${L("Somos una familia de fe en Houston. Aquí nadie llega solo: te recibimos, caminamos contigo y te ayudamos a dar el siguiente paso.", "We are a family of faith in Houston. No one arrives alone here: we welcome you, walk with you and help you take your next step.")}</p>
       <div class="hero-actions">
-        <a class="btn btn-gold btn-lg" href="grupos.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>${L("Buscar mi grupo de conexión", "Find my connection group")}</a>
+        <a class="btn btn-group" href="grupos.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>${L("Buscar mi grupo de conexión", "Find my connection group")}</a>
         <a class="btn btn-ghost" href="visitanos.html">${L("Planea tu visita", "Plan your visit")}</a>
       </div>
     </div>
@@ -199,6 +199,20 @@ function content(lang) {
     </aside>
   </div>
   <span class="scroll-cue" aria-hidden="true"></span>
+</section>
+
+<section class="group-spotlight">
+  <div class="wrap">
+    <div class="spot">
+      <div>
+        <span class="eyebrow">${L("Grupos de conexión", "Connection groups")}</span>
+        <h2>${L("¿Buscas un grupo <em>cerca de tu casa</em>?", "Looking for a group <em>near your home</em>?")}</h2>
+        <p>${L("Escribe tu dirección y en un minuto ves los grupos más cercanos, su día y su líder. Tú eliges; el líder te contacta.", "Enter your address and in a minute you will see the closest groups, their day and their leader. You choose; the leader reaches out.")}</p>
+        <ul class="spot-facts"><li><b>12</b>${L("grupos activos", "active groups")}</li><li><b>1×</b>${L("por semana", "per week")}</li><li><b>1 min</b>${L("para encontrarlo", "to find yours")}</li></ul>
+      </div>
+      <a class="btn btn-spot" href="grupos.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>${L("Buscar mi grupo de conexión", "Find my connection group")}<span aria-hidden="true">→</span></a>
+    </div>
+  </div>
 </section>
 
 <div class="marquee" aria-hidden="true"><span>${L("Pertenecer · Crecer · Servir · Orar · Celebrar · ", "Belong · Grow · Serve · Pray · Celebrate · ").repeat(6)}</span></div>
