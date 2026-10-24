@@ -45,13 +45,13 @@ const T = {
   es: {
     lang: "es",
     other: "en",
-    nav: { index: "Inicio", nosotros: "Nosotros", grupos: "Grupos", eventos: "Eventos", oracion: "Oración", visitanos: "Visítanos" },
+    nav: { index: "Inicio", nosotros: "Nosotros", grupos: "Grupos", servir: "Servir", academia: "Academia", eventos: "Eventos", oracion: "Oración", visitanos: "Visítanos" },
     plan: "Planea tu visita",
     platform: "Plataforma",
     finderTitle: "Buscar mi grupo de conexión",
     close: "Cerrar",
     platformTitle: "Entra a Truly: líderes, equipo y miembros",
-    demo: `Sitio de demostración: <b>Truly Church</b> es una iglesia ficticia. El chat, la oración y "Encuentra tu grupo" funcionan con <a href="${TRULY}" target="_blank" rel="noopener">Truly</a>.`,
+    demo: `Sitio de demostración: <b>Truly Church</b> es una iglesia ficticia. El chat, la oración, "Encuentra tu grupo", "Quiero servir" y la Academia funcionan con <a href="${TRULY}" target="_blank" rel="noopener">Truly</a>.`,
     menu: "Abrir menú",
     footer: {
       tagline: "Una familia para pertenecer, crecer y servir en Houston.",
@@ -74,13 +74,13 @@ const T = {
   en: {
     lang: "en",
     other: "es",
-    nav: { index: "Home", nosotros: "About", grupos: "Groups", eventos: "Events", oracion: "Prayer", visitanos: "Visit" },
+    nav: { index: "Home", nosotros: "About", grupos: "Groups", servir: "Serve", academia: "Academy", eventos: "Events", oracion: "Prayer", visitanos: "Visit" },
     plan: "Plan your visit",
     platform: "Platform",
     finderTitle: "Find my connection group",
     close: "Close",
     platformTitle: "Sign in to Truly: leaders, team and members",
-    demo: `Demo site: <b>Truly Church</b> is a fictional church. The chat, prayer and "Find your group" run on <a href="${TRULY}" target="_blank" rel="noopener">Truly</a>.`,
+    demo: `Demo site: <b>Truly Church</b> is a fictional church. The chat, prayer, "Find your group", "I want to serve" and the Academy run on <a href="${TRULY}" target="_blank" rel="noopener">Truly</a>.`,
     menu: "Open menu",
     footer: {
       tagline: "A family to belong, grow and serve in Houston.",
@@ -102,12 +102,13 @@ const T = {
   },
 };
 
-const PAGES = ["index", "nosotros", "grupos", "eventos", "oracion", "visitanos"];
+const PAGES = ["index", "nosotros", "grupos", "servir", "academia", "eventos", "oracion", "visitanos"];
 
 function layout(t, file, title, description, body) {
   const base = t.lang === "es" ? "" : "../";
   const here = t.lang === "es" ? "" : "en/";
-  const nav = PAGES.map((p) => `<li><a href="${p}.html"${p === file ? ' aria-current="page"' : ""}>${t.nav[p]}</a></li>`).join("");
+  // "Visítanos" ya está en el botón "Planea tu visita" y en el pie: fuera del menú (2026-10-24).
+  const nav = PAGES.filter((p) => p !== "visitanos").map((p) => `<li><a href="${p}.html"${p === file ? ' aria-current="page"' : ""}>${t.nav[p]}</a></li>`).join("");
   const esHref = t.lang === "es" ? `${file}.html` : `../${file}.html`;
   const enHref = t.lang === "en" ? `${file}.html` : `en/${file}.html`;
   return `<!doctype html>
@@ -238,8 +239,8 @@ function content(lang) {
     </div>
     <div class="bento">
       <a class="tile span-4" href="grupos.html" style="min-height:340px"><img src="${MEDIA.silhouettes}" alt=""><h3>${L("Conéctate", "Connect")}</h3><p>${L("Doce grupos de conexión se reúnen en casas por toda la ciudad. Encuentra el más cercano a ti.", "Twelve connection groups meet in homes across the city. Find the one closest to you.")}</p><span class="go">${L("Buscar mi grupo →", "Find my group →")}</span></a>
-      <a class="tile gold span-2" href="eventos.html"><h3>${L("Crece", "Grow")}</h3><p>${L("Clases, rutas de crecimiento y un plan devocional.", "Classes, growth paths and a devotional plan.")}</p><span class="go">${L("Próximas clases →", "Upcoming classes →")}</span></a>
-      <a class="tile plain span-2" href="nosotros.html#ministerios"><h3>${L("Sirve", "Serve")}</h3><p>${L("Alabanza, niños, bienvenida, medios y más.", "Worship, kids, welcome team, media and more.")}</p><span class="go">${L("Áreas de servicio →", "Ways to serve →")}</span></a>
+      <a class="tile gold span-2" href="academia.html"><h3>${L("Crece", "Grow")}</h3><p>${L("Clases, rutas de crecimiento y un plan devocional.", "Classes, growth paths and a devotional plan.")}</p><span class="go">${L("Próximas clases →", "Upcoming classes →")}</span></a>
+      <a class="tile plain span-2" href="servir.html"><h3>${L("Sirve", "Serve")}</h3><p>${L("Alabanza, niños, bienvenida, medios y más.", "Worship, kids, welcome team, media and more.")}</p><span class="go">${L("Áreas de servicio →", "Ways to serve →")}</span></a>
       <a class="tile span-4" href="oracion.html" style="min-height:300px"><img src="${MEDIA.praying}" alt=""><h3>${L("¿Podemos orar por ti?", "Can we pray for you?")}</h3><p>${L("Nuestro equipo de cuidado ora por cada petición. Es confidencial.", "Our care team prays for every request. It's confidential.")}</p><span class="go">${L("Enviar una petición →", "Send a request →")}</span></a>
     </div>
   </div>
@@ -351,6 +352,32 @@ function content(lang) {
       <li><span>2</span><b>${L("Mira los grupos cercanos", "See the nearby groups")}</b><p>${L("Distancia, día, hora y el nombre del líder de cada uno.", "Distance, day, time and the leader of each one.")}</p></li>
       <li><span>3</span><b>${L("Elige y te contactamos", "Choose and we reach out")}</b><p>${L("El líder recibe tu solicitud y te escribe para darte la bienvenida.", "The leader gets your request and reaches out to welcome you.")}</p></li>
     </ol>
+    ${spanishOnly}
+  </div>
+</section>`,
+    },
+    servir: {
+      title: L("Quiero servir", "I want to serve"),
+      description: L("Encuentra dónde servir en la iglesia: alabanza, niños, bienvenida, medios y más.", "Find where to serve: worship, kids, welcome, media and more."),
+      body: `
+<section class="page-hero photo compact" style="background-image:url('${MEDIA.worship}')"><div class="wrap"><span class="eyebrow">${L("Servir", "Serve")}</span><h1>${L("Tus dones tienen un lugar aquí", "Your gifts have a place here")}</h1><p>${L("Cuéntanos qué te gusta hacer y el líder del área te contactará para empezar.", "Tell us what you enjoy doing and the area leader will reach out to get you started.")}</p></div></section>
+<section>
+  <div class="wrap" style="max-width:760px">
+    <div class="embed-shell"><iframe src="${TRULY}/servir/${CODE}" style="height:900px" loading="lazy" title="${L("Quiero servir", "I want to serve")}"></iframe></div>
+    <p class="embed-note"><b>${L("Sin compromiso:", "No commitment:")}</b> ${L("primero conversas con el líder del área y decides juntos.", "you first talk with the area leader and decide together.")}</p>
+    ${spanishOnly}
+  </div>
+</section>`,
+    },
+    academia: {
+      title: L("Academia", "Academy"),
+      description: L("Clases y programas para crecer en la fe: inscríbete en línea.", "Classes and programs to grow in faith: enroll online."),
+      body: `
+<section class="page-hero photo compact" style="background-image:url('${MEDIA.stage}')"><div class="wrap"><span class="eyebrow">${L("Academia", "Academy")}</span><h1>${L("Crece paso a paso", "Grow step by step")}</h1><p>${L("Elige un curso o un programa y apártate tu cupo. Te avisamos antes de cada clase.", "Choose a course or a program and save your spot. We remind you before each class.")}</p></div></section>
+<section>
+  <div class="wrap" style="max-width:760px">
+    <div class="embed-shell"><iframe src="${TRULY}/academia/${CODE}" style="height:900px" loading="lazy" title="${L("Academia", "Academy")}"></iframe></div>
+    <p class="embed-note"><b>${L("Tu avance queda guardado:", "Your progress is saved:")}</b> ${L("asistencia, notas y certificados en un solo lugar.", "attendance, grades and certificates in one place.")}</p>
     ${spanishOnly}
   </div>
 </section>`,

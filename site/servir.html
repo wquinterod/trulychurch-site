@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quiero servir · Truly Church</title>
+<meta name="description" content="Encuentra dónde servir en la iglesia: alabanza, niños, bienvenida, medios y más.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="alternate" hreflang="es" href="/servir.html">
+<link rel="alternate" hreflang="en" href="/en/servir.html">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="demo-bar">Sitio de demostración: <b>Truly Church</b> es una iglesia ficticia. El chat, la oración, "Encuentra tu grupo", "Quiero servir" y la Academia funcionan con <a href="https://truly.church" target="_blank" rel="noopener">Truly</a>.</div>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><img src="logo.svg" alt=""><b>Truly Church</b></a>
+    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" onclick="const l=document.querySelector('.nav-links');const o=l.classList.toggle('open');this.setAttribute('aria-expanded',o)"><span></span><span></span><span></span></button>
+    <ul class="nav-links"><li><a href="index.html">Inicio</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="grupos.html">Grupos</a></li><li><a href="servir.html" aria-current="page">Servir</a></li><li><a href="academia.html">Academia</a></li><li><a href="eventos.html">Eventos</a></li><li><a href="oracion.html">Oración</a></li><li><a class="nav-platform" href="https://truly.church/login" title="Entra a Truly: líderes, equipo y miembros"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg>Plataforma</a></li></ul>
+    <div class="nav-end">
+      <nav class="lang-switch" aria-label="Idioma / Language"><a href="servir.html" hreflang="es" aria-current="true">ES</a><a href="en/servir.html" hreflang="en">EN</a></nav>
+      <a class="btn btn-gold" href="visitanos.html">Planea tu visita</a>
+    </div>
+  </div>
+</header>
+<main>
+
+<section class="page-hero photo compact" style="background-image:url('https://images.unsplash.com/photo-1635178945103-fb817c1476fd?auto=format&fit=crop&w=1200&q=70')"><div class="wrap"><span class="eyebrow">Servir</span><h1>Tus dones tienen un lugar aquí</h1><p>Cuéntanos qué te gusta hacer y el líder del área te contactará para empezar.</p></div></section>
+<section>
+  <div class="wrap" style="max-width:760px">
+    <div class="embed-shell"><iframe src="https://truly.church/servir/5egx2yABl2bx" style="height:900px" loading="lazy" title="Quiero servir"></iframe></div>
+    <p class="embed-note"><b>Sin compromiso:</b> primero conversas con el líder del área y decides juntos.</p>
+    
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><img src="logo.svg" alt=""><b>Truly Church</b></div>
+        <p>Una familia para pertenecer, crecer y servir en Houston.</p>
+      </div>
+      <div><h4>Visítanos</h4><ul><li>100 Demo Way</li><li>Houston, TX</li><li>Domingos 9:00 y 11:30 a. m.</li></ul></div>
+      <div><h4>Conéctate</h4><ul><li><a href="grupos.html">Encuentra tu grupo</a></li><li><a href="oracion.html">Pide oración</a></li><li><a href="eventos.html">Eventos</a></li></ul></div>
+      <div><h4>Iglesia</h4><ul><li><a href="nosotros.html">Nuestra historia</a></li><li><a href="nosotros.html#pastores">Pastores</a></li><li><a href="visitanos.html">Preguntas frecuentes</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Truly Church · Iglesia ficticia para demostración. <span class="credits">Fotos: Unsplash · Video: Mixkit</span></span>
+      <span>Tu iglesia también puede tener esto: <a href="https://truly.church" target="_blank" rel="noopener">conoce Truly</a></span>
+    </div>
+  </div>
+</footer>
+<dialog class="finder-modal" id="truly-finder" aria-label="Buscar mi grupo de conexión">
+  <div class="finder-bar"><b>Buscar mi grupo de conexión</b><button type="button" class="finder-close" data-close-finder aria-label="Cerrar">✕</button></div>
+  <iframe data-src="https://truly.church/grupos-cerca/5egx2yABl2bx" title="Buscar mi grupo de conexión" style="height:900px"></iframe>
+</dialog>
+<script>(function(){var d=document.getElementById("truly-finder");if(!d||!d.showModal)return;var f=d.querySelector("iframe");document.addEventListener("click",function(e){var a=e.target.closest("[data-open-finder]");if(a){e.preventDefault();if(!f.src)f.src=f.dataset.src;d.showModal();}if(e.target.closest("[data-close-finder]")||e.target===d)d.close();});})();</script>
+<script>addEventListener("message",function(e){if(e.origin!=="https://truly.church"||!e.data)return;var f=[].filter.call(document.querySelectorAll("iframe"),function(x){return x.contentWindow===e.source})[0];if(!f)return;if(e.data.type==="truly-embed-height")f.style.height=Math.max(320,Number(e.data.height)||0)+"px";if(e.data.type==="truly-embed-scroll"){var o=Number(e.data.offset)||0,p=f.parentElement;while(p&&p!==document.body){var s=getComputedStyle(p).overflowY;if((s==="auto"||s==="scroll")&&p.scrollHeight>p.clientHeight)break;p=p.parentElement}if(p&&p!==document.body)p.scrollTo({top:p.scrollTop+f.getBoundingClientRect().top-p.getBoundingClientRect().top+o-70,behavior:"smooth"});else window.scrollTo({top:f.getBoundingClientRect().top+scrollY+o-90,behavior:"smooth"})}});</script>
+<script src="https://truly.church/api/public/chat/5egx2yABl2bx/widget.js" async></script>
+
+</body>
+</html>
