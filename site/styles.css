@@ -155,6 +155,8 @@ h2.title { font-family: var(--serif); font-weight: 600; font-size: clamp(30px, 4
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 /* Menú plegable desde 1320 px (2026-10-24): con Servir y Academia, 8 enlaces no caben en una laptop. */
+/* Con Servir y Academia el menú completo no cabe con el botón "Planea tu visita": va en la portada y en el pie, no en el encabezado (2026-10-24). */
+.nav .btn-gold { display: none; }
 @media (max-width: 1320px) {
   .menu-toggle { display: block; }
   .nav-links { position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; align-items: stretch; background: var(--cream); border-bottom: 1px solid var(--line); padding: 10px 20px 18px; display: none; }
