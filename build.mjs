@@ -17,7 +17,7 @@ const EMBED_LISTENER = `<script>addEventListener("message",function(e){if(e.orig
 const FINDER_URL = `${TRULY}/grupos-cerca/${CODE}`;
 const finderModal = (t) => `<dialog class="finder-modal" id="truly-finder" aria-label="${t.finderTitle}">
   <div class="finder-bar"><b>${t.finderTitle}</b><button type="button" class="finder-close" data-close-finder aria-label="${t.close}">✕</button></div>
-  <iframe data-src="${FINDER_URL}" title="${t.finderTitle}" style="height:900px"></iframe>
+  <iframe data-src="${FINDER_URL}?ventana=1" title="${t.finderTitle}"></iframe>
 </dialog>
 <script>(function(){var d=document.getElementById("truly-finder");if(!d||!d.showModal)return;var f=d.querySelector("iframe");document.addEventListener("click",function(e){var a=e.target.closest("[data-open-finder]");if(a){e.preventDefault();if(!f.src)f.src=f.dataset.src;d.showModal();}if(e.target.closest("[data-close-finder]")||e.target===d)d.close();});})();</script>`;
 const CHAT = `<script src="${TRULY}/api/public/chat/${CODE}/widget.js" async></script>`;
