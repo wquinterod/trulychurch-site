@@ -179,12 +179,12 @@ function content(lang) {
         <li><div><b>${L("Miércoles", "Wednesday")}</b><span>${L("Oración y estudio", "Prayer & study")}</span></div><div class="hour">${L("7:30 p. m.", "7:30 p.m.")}</div></li>
       </ul>`;
   const eventRow = (d, m, title, desc, primary) =>
-    `<div class="event"><div class="date"><b>${d}</b><span>${m}</span></div><div><h3>${title}</h3><p>${desc}</p></div><a class="btn ${primary ? "btn-navy" : "btn-outline"}" href="visitanos.html">${L("Más información", "Learn more")}</a></div>`;
+    `<div class="event"><div class="date"><b>${d}</b><span>${m}</span></div><div><h3>${title}</h3><p>${desc}</p></div><a class="btn ${primary ? "btn-navy" : "btn-outline"}" href="eventos.html">${L("Ver evento", "See event")}</a></div>`;
   const events = [
-    ["25", L("Oct", "Oct"), L("Noche de bienvenida", "Welcome night"), L("Viernes 7:00 p. m. · Para quienes nos visitan por primera vez.", "Friday 7:00 p.m. · For first-time guests.")],
-    ["08", L("Nov", "Nov"), L("Retiro de matrimonios", "Marriage retreat"), L("Sábado 9:00 a. m. · Talleres, almuerzo y tiempo en pareja.", "Saturday 9:00 a.m. · Workshops, lunch and time together.")],
-    ["15", L("Nov", "Nov"), L("Clase: Fundamentos de la fe", "Class: Foundations of faith"), L("Cuatro sábados · El primer paso de la ruta de crecimiento.", "Four Saturdays · The first step of our growth path.")],
-    ["13", L("Dic", "Dec"), L("Noche de Navidad", "Christmas night"), L("Sábado 6:00 p. m. · Música, niños y cena para toda la familia.", "Saturday 6:00 p.m. · Music, kids and dinner for the whole family.")],
+    ["06", L("Nov", "Nov"), L("Noche de bienvenida", "Welcome night"), L("Viernes 7:00 p. m. · Para quienes nos visitan por primera vez.", "Friday 7:00 p.m. · For first-time guests.")],
+    ["14", L("Nov", "Nov"), L("Retiro de matrimonios", "Marriage retreat"), L("Sábado 9:00 a. m. · Talleres, almuerzo y tiempo en pareja.", "Saturday 9:00 a.m. · Workshops, lunch and time together.")],
+    ["06", L("Dic", "Dec"), L("Domingo de bautismos", "Baptism Sunday"), L("Domingo 11:30 a. m. · Celebramos a quienes dan el paso del bautismo.", "Sunday 11:30 a.m. · We celebrate those taking the step of baptism.")],
+    ["12", L("Dic", "Dec"), L("Noche de Navidad", "Christmas night"), L("Sábado 6:00 p. m. · Música, niños y cena para toda la familia.", "Saturday 6:00 p.m. · Music, kids and dinner for the whole family.")],
   ];
   const spanishOnly = es ? "" : `<p class="embed-note"><b>Note:</b> this form is shown in Spanish, the language this church uses in Truly.</p>`;
 
@@ -362,7 +362,7 @@ function content(lang) {
       body: `
 <section class="page-hero photo compact" style="background-image:url('${MEDIA.worship}')"><div class="wrap"><span class="eyebrow">${L("Servir", "Serve")}</span><h1>${L("Tus dones tienen un lugar aquí", "Your gifts have a place here")}</h1><p>${L("Cuéntanos qué te gusta hacer y el líder del área te contactará para empezar.", "Tell us what you enjoy doing and the area leader will reach out to get you started.")}</p></div></section>
 <section>
-  <div class="wrap" style="max-width:760px">
+  <div class="wrap" style="max-width:1160px">
     <div class="embed-shell"><iframe src="${TRULY}/servir/${CODE}" style="height:900px" loading="lazy" title="${L("Quiero servir", "I want to serve")}"></iframe></div>
     <p class="embed-note"><b>${L("Sin compromiso:", "No commitment:")}</b> ${L("primero conversas con el líder del área y decides juntos.", "you first talk with the area leader and decide together.")}</p>
     ${spanishOnly}
@@ -375,7 +375,7 @@ function content(lang) {
       body: `
 <section class="page-hero photo compact" style="background-image:url('${MEDIA.stage}')"><div class="wrap"><span class="eyebrow">${L("Academia", "Academy")}</span><h1>${L("Crece paso a paso", "Grow step by step")}</h1><p>${L("Elige un curso o un programa y apártate tu cupo. Te avisamos antes de cada clase.", "Choose a course or a program and save your spot. We remind you before each class.")}</p></div></section>
 <section>
-  <div class="wrap" style="max-width:760px">
+  <div class="wrap" style="max-width:1160px">
     <div class="embed-shell"><iframe src="${TRULY}/academia/${CODE}" style="height:900px" loading="lazy" title="${L("Academia", "Academy")}"></iframe></div>
     <p class="embed-note"><b>${L("Tu avance queda guardado:", "Your progress is saved:")}</b> ${L("asistencia, notas y certificados en un solo lugar.", "attendance, grades and certificates in one place.")}</p>
     ${spanishOnly}
@@ -399,10 +399,12 @@ function content(lang) {
       title: L("Eventos", "Events"),
       description: L("Próximos eventos de Truly Church.", "Upcoming events at Truly Church."),
       body: `
-<section class="page-hero photo" style="background-image:url('${MEDIA.stage}')"><div class="wrap"><span class="eyebrow">${L("Agenda", "Calendar")}</span><h1>${L("Próximos eventos", "Upcoming events")}</h1><p>${L("Hay algo para cada etapa de la vida. Inscríbete y recibe tu entrada en el correo.", "There's something for every season of life. Sign up and get your ticket by email.")}</p></div></section>
+<section class="page-hero photo compact" style="background-image:url('${MEDIA.stage}')"><div class="wrap"><span class="eyebrow">${L("Agenda", "Calendar")}</span><h1>${L("Próximos eventos", "Upcoming events")}</h1><p>${L("Hay algo para cada etapa de la vida. Inscríbete y recibe tu entrada en el correo.", "There's something for every season of life. Sign up and get your ticket by email.")}</p></div></section>
 <section>
-  <div class="wrap">
-    ${events.map((e) => eventRow(...e, true)).join("\n    ")}
+  <div class="wrap" style="max-width:1160px">
+    <div class="embed-shell"><iframe src="${TRULY}/eventos/${CODE}" style="height:900px" loading="lazy" title="${L("Próximos eventos", "Upcoming events")}"></iframe></div>
+    <p class="embed-note"><b>${L("Tu entrada llega al correo:", "Your ticket arrives by email:")}</b> ${L("muéstrala al llegar. Los eventos de entrada libre no necesitan inscripción.", "show it when you arrive. Free-entry events need no sign-up.")}</p>
+    ${spanishOnly}
   </div>
 </section>`,
     },
