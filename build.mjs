@@ -45,7 +45,7 @@ const T = {
   es: {
     lang: "es",
     other: "en",
-    nav: { index: "Inicio", nosotros: "Nosotros", grupos: "Grupos", servir: "Servir", academia: "Academia", eventos: "Eventos", oracion: "Oración", visitanos: "Visítanos" },
+    nav: { index: "Inicio", nosotros: "Nosotros", grupos: "Grupos", servir: "Servir", academia: "Academia", eventos: "Eventos", oracion: "Oración", dar: "Dar", visitanos: "Visítanos" },
     plan: "Planea tu visita",
     platform: "Plataforma",
     finderTitle: "Buscar mi grupo de conexión",
@@ -74,7 +74,7 @@ const T = {
   en: {
     lang: "en",
     other: "es",
-    nav: { index: "Home", nosotros: "About", grupos: "Groups", servir: "Serve", academia: "Academy", eventos: "Events", oracion: "Prayer", visitanos: "Visit" },
+    nav: { index: "Home", nosotros: "About", grupos: "Groups", servir: "Serve", academia: "Academy", eventos: "Events", oracion: "Prayer", dar: "Give", visitanos: "Visit" },
     plan: "Plan your visit",
     platform: "Platform",
     finderTitle: "Find my connection group",
@@ -102,7 +102,7 @@ const T = {
   },
 };
 
-const PAGES = ["index", "nosotros", "grupos", "servir", "academia", "eventos", "oracion", "visitanos"];
+const PAGES = ["index", "nosotros", "grupos", "servir", "academia", "eventos", "oracion", "dar", "visitanos"];
 
 function layout(t, file, title, description, body) {
   const base = t.lang === "es" ? "" : "../";
@@ -151,7 +151,7 @@ ${body}
         <p>${t.footer.tagline}</p>
       </div>
       <div><h4>${t.footer.visit}</h4><ul><li>100 Demo Way</li><li>Houston, TX</li><li>${t.footer.sundays}</li></ul></div>
-      <div><h4>${t.footer.connect}</h4><ul><li><a href="grupos.html">${t.footer.findGroup}</a></li><li><a href="oracion.html">${t.footer.pray}</a></li><li><a href="eventos.html">${t.nav.eventos}</a></li></ul></div>
+      <div><h4>${t.footer.connect}</h4><ul><li><a href="grupos.html">${t.footer.findGroup}</a></li><li><a href="oracion.html">${t.footer.pray}</a></li><li><a href="eventos.html">${t.nav.eventos}</a></li><li><a href="dar.html">${t.nav.dar}</a></li></ul></div>
       <div><h4>${t.footer.church}</h4><ul><li><a href="nosotros.html">${t.footer.story}</a></li><li><a href="nosotros.html#pastores">${t.footer.pastors}</a></li><li><a href="visitanos.html">${t.footer.faq}</a></li></ul></div>
     </div>
     <div class="footer-bottom">
@@ -407,6 +407,28 @@ function content(lang) {
     ${spanishOnly}
   </div>
 </section>`,
+    },
+    // Dar (2026-11-25): el botón lo dibuja Truly con UNA línea (boton.js) y abre la página Dar en pestaña nueva.
+    // Mientras la página Dar de la iglesia esté apagada, el script no dibuja nada y se muestra el aviso de respaldo.
+    dar: {
+      title: L("Dar", "Give"),
+      description: L("Da tu diezmo u ofrenda en línea con Apple Pay, Google Pay, tarjeta o tu banco.", "Give your tithe or offering online with Apple Pay, Google Pay, card or your bank."),
+      body: `
+<section class="page-hero photo compact" style="background-image:url('${MEDIA.hands}')"><div class="wrap"><span class="eyebrow">${L("Dar", "Give")}</span><h1>${L("Gracias por tu generosidad", "Thank you for your generosity")}</h1><p>${L("Tu diezmo y tu ofrenda sostienen los grupos, la academia y el cuidado de las familias de Houston.", "Your tithe and offering support our groups, academy and care for families across Houston.")}</p></div></section>
+<section>
+  <div class="wrap" style="max-width:760px;text-align:center">
+    <ol class="steps">
+      <li><span>1</span><b>${L("Elige para qué es", "Choose what it's for")}</b><p>${L("Diezmo, ofrenda u otro motivo, el monto y cada cuánto.", "Tithe, offering or another fund, the amount and how often.")}</p></li>
+      <li><span>2</span><b>${L("Escribe tus datos", "Enter your details")}</b><p>${L("Nombre, correo y teléfono: así tu ofrenda cuenta en tu certificado.", "Name, email and phone, so your gift counts on your statement.")}</p></li>
+      <li><span>3</span><b>${L("Paga seguro", "Pay securely")}</b><p>${L("Apple Pay, Google Pay, tarjeta o tu banco. Lo procesa Stripe.", "Apple Pay, Google Pay, card or your bank. Processed by Stripe.")}</p></li>
+    </ol>
+    <div class="dar-slot" style="margin:34px 0 12px"><script src="${TRULY}/api/public/dar/truly-church/boton.js" data-texto="${L("Dar ahora", "Give now")}" async></script></div>
+    <p class="embed-note" id="dar-pronto" hidden><b>${L("Muy pronto podrás dar en línea.", "Online giving is coming soon.")}</b> ${L("Mientras tanto, puedes dar en el servicio en un sobre con tu nombre para que cuente en tu certificado.", "Meanwhile, you can give at the service in an envelope with your name so it counts on your statement.")}</p>
+    <p class="embed-note"><b>${L("Tu tarjeta está protegida:", "Your card is protected:")}</b> ${L("ni la iglesia ni Truly ven ni guardan tus datos de pago. Recibes el recibo en tu correo y, a comienzos de año, tu certificado de donaciones.", "neither the church nor Truly sees or stores your payment details. You get a receipt by email and, early in the year, your giving statement.")}</p>
+    <p class="embed-note">${L("¿Dudas? Pregúntale a Sofía en el chat de abajo a la derecha.", "Questions? Ask Sofía in the chat at the bottom right.")}</p>
+  </div>
+</section>
+<script>window.addEventListener("load",function(){setTimeout(function(){if(!document.querySelector(".truly-dar-btn"))document.getElementById("dar-pronto").hidden=false;},1500);});</script>`,
     },
     visitanos: {
       title: L("Visítanos", "Visit"),
